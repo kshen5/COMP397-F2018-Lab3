@@ -32,6 +32,7 @@ var objects;
         };
         Player.prototype.Update = function () {
             this.x = managers.Game.stage.mouseX;
+            this._updatePosition();
             // checks the right boundary
             if (this.x > 640 - this.HalfWidth) {
                 this.x = 640 - this.HalfWidth;

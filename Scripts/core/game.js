@@ -7,22 +7,22 @@
     var currentScene;
     var currentState;
     var assetManifest = [
-        { id: "startButton", src: "/Assets/images/startButton.png" },
-        { id: "restartButton", src: "/Assets/images/restartButton.png" },
-        { id: "plane", src: "/Assets/images/plane.png" },
-        { id: "cloud", src: "/Assets/images/cloud.png" },
-        { id: "island", src: "/Assets/images/island.png" },
-        { id: "ocean", src: "/Assets/images/ocean.gif" },
-        { id: "engineSound", src: "/Assets/audio/engine.ogg" },
-        { id: "thunderSound", src: "/Assets/audio/thunder.ogg" },
-        { id: "yaySound", src: "/Assets/audio/yay.ogg" }
+        { id: "startButton", src: "./Assets/images/startButton.png" },
+        { id: "restartButton", src: "./Assets/images/restartButton.png" },
+        { id: "plane", src: "./Assets/images/plane.png" },
+        { id: "cloud", src: "./Assets/images/cloud.png" },
+        { id: "island", src: "./Assets/images/island.png" },
+        { id: "ocean", src: "./Assets/images/ocean.gif" },
+        { id: "engineSound", src: "./Assets/audio/engine.ogg" },
+        { id: "thunderSound", src: "./Assets/audio/thunder.ogg" },
+        { id: "yaySound", src: "./Assets/audio/yay.ogg" }
     ];
     function Init() {
         assetManager = new createjs.LoadQueue();
-        managers.Game.assetManager = assetManager; // creates a reference to the global assetManager
-        assetManager.installPlugin(createjs.Sound); // enable sound preloading
-        assetManager.loadManifest(assetManifest); // preloads all assets listed in the manifest
-        assetManager.on("complete", Start); // call Start when assets are finished loading
+        managers.Game.assetManager = assetManager;
+        assetManager.installPlugin(createjs.Sound);
+        assetManager.loadManifest(assetManifest);
+        assetManager.on("complete", Start);
     }
     function Start() {
         console.log("%c Game Started...", "color: blue; font-size: 20px;");

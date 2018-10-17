@@ -18,6 +18,7 @@ var objects;
         // constructors
         function GameObject(imageString) {
             var _this = _super.call(this, managers.Game.assetManager.getResult(imageString)) || this;
+            _this.name = imageString;
             _this._initialize();
             return _this;
         }
@@ -64,10 +65,36 @@ var objects;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(GameObject.prototype, "Position", {
+            get: function () {
+                return this._position;
+            },
+            set: function (newPosition) {
+                this._position = newPosition;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(GameObject.prototype, "IsColliding", {
+            get: function () {
+                return this._isColliding;
+            },
+            set: function (newValue) {
+                this._isColliding = newValue;
+            },
+            enumerable: true,
+            configurable: true
+        });
         // private methods
         GameObject.prototype._initialize = function () {
             this.Width = this.getBounds().width;
             this.Height = this.getBounds().height;
+            this.Position = new util.Vector2(this.x, this.y);
+            this.IsColliding = false;
+        };
+        GameObject.prototype._updatePosition = function () {
+            this.Position.x = this.x;
+            this.Position.y = this.y;
         };
         return GameObject;
     }(createjs.Bitmap));

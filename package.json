@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "COMP397 - F2018 - Lesson 4 - FSM Intro",
   "main": "index.js",
-  "repository": "https://github.com/CentennialCollege/COMP397-F2018-Lesson4.git",
-  "author": "Tom Tsiliopoulos <tsiliopoulos@hotmail.com>",
+  "repository": "https://github.com/kshen5/COMP397-F2018-Lesson1.git",
+  "author": "kshen5 <kshen5@my.centennialcollege.ca>",
   "license": "MIT",
   "dependencies": {
     "easeljs": "^1.0.2",

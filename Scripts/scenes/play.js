@@ -35,21 +35,24 @@ var scenes;
             this.Main();
         };
         Play.prototype.Update = function () {
+            var _this = this;
             this._ocean.Update();
             this._player.Update();
             this._island.Update();
+            // check if player and island are colliding
+            managers.Collision.Check(this._player, this._island);
             // Update Each cloud in the Cloud Array
-            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
-                var cloud = _a[_i];
+            this._clouds.forEach(function (cloud) {
                 cloud.Update();
-            }
+                managers.Collision.Check(_this._player, cloud);
+            });
         };
         Play.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Play.prototype.Reset = function () {
-        };
+        Play.prototype.Reset = function () { };
         Play.prototype.Main = function () {
+            var _this = this;
             // adds ocean to the scene
             this._ocean = new objects.Ocean();
             this.addChild(this._ocean);
@@ -60,10 +63,9 @@ var scenes;
             this._player = new objects.Player();
             this.addChild(this._player);
             // adds Each Cloud in the Cloud Array to the Scene
-            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
-                var cloud = _a[_i];
-                this.addChild(cloud);
-            }
+            this._clouds.forEach(function (cloud) {
+                _this.addChild(cloud);
+            });
         };
         return Play;
     }(objects.Scene));
